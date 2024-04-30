@@ -1,0 +1,41 @@
+<!-- {{user|json}}  -->
+<!-- {{patient|json}} -->
+<div class="card swiper-slide" *ngIf="this.role == 'PATIENT'">
+  <div class="image-content">
+    <span class="overlay"></span>
+    <div class="card-image">
+      <img [src]="patient.imageName" alt="" class="card-img" />
+    </div>
+  </div>
+
+  <div class="card-content">
+    <h1>Name: {{ patient.patientName }}</h1>
+    <h2>Age :{{ patient.age }}</h2>
+    <h2 class="name">{{ patient.name }}</h2>
+    <p class="description">City {{ patient.city }} {{ patient.country }} .</p>
+    <a [routerLink]="'/patientmaindashboard/patientprofilesetting'"
+      ><i class="bi bi-gear-fill"></i
+    ></a>
+  </div>
+</div>
+
+<!-- {{doctor|json}} -->
+<div class="card swiper-slide" *ngIf="this.role == 'DOCTOR'">
+  <div class="image-content">
+    <span class="overlay"></span>
+    <div class="card-image">
+      <img [src]="doctor.imageName" alt="" class="card-img" />
+    </div>
+  </div>
+  <div class="card-content">
+    <h2 class="name">{{ doctor.name }}</h2>
+    <p class="description">
+      Doctor With Specility Of {{ doctor.speciality.spName }}
+      {{ doctor.speciality.spDescription }} From City Of {{ doctor.city }}
+      {{ doctor.postalcode }} .
+    </p>
+    <a [routerLink]="'/doctordashboard/doctorprofilesetting'"
+      ><i class="bi bi-gear-fill"></i
+    ></a>
+  </div>
+</div>

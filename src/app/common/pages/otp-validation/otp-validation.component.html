@@ -1,0 +1,28 @@
+<div class="container height-100 d-flex justify-content-center align-items-center">
+  <div class="position-relative">
+    <div class="card p-2 text-center">
+      <h6>Please enter the one-time password <br> to verify your account</h6>
+      <div>
+        <span>A code has been sent to</span>
+        <small>YOUR EMAIL</small>
+      </div>
+      <form >
+             
+        <div class="form-group text-center">
+          <ng-otp-input   (onInputChange)="onOtpChange($event)"  name="otp"  [config]="{length:4}" ></ng-otp-input><br/>
+            <button class="btn btn-primary account-btn" 
+            (click)="verifyEmail()" type="submit">Enter</button>
+        </div>
+        
+    </form>
+    </div>
+    <div class="card-2">
+      <div class="content d-flex justify-content-center align-items-center">
+        <span>Didn't get the code</span>
+        <a (click)="resendOtp()" class="text-decoration-none ms-3">Resend(1/3)</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- {{ fullOTP | json }} -->

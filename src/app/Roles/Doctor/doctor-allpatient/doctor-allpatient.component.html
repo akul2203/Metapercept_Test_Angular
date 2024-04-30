@@ -1,0 +1,66 @@
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+        <nav aria-label="breadcrumb" class="page-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="'/doctordashboard'">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+              My Patient
+            </li>
+          </ol>
+        </nav>
+        <h2 class="breadcrumb-title">My Patients</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Breadcrumb -->
+<!-- {{patientsList|json}} -->
+  <div class="row row-grid">
+    <div class="col-md-6 col-lg-4 col-xl-3" *ngFor="let patient of patientsList">
+      <div class="card widget-profile pat-widget-profile">
+        <div class="card-body">
+          <div class="pro-widget-content">
+            <div class="profile-info-widget">
+              <a
+                [routerLink]="['/patient-profile']"
+                class="booking-doc-img"
+              >
+                <img [src]="patient.imageName" alt="User Image" />
+              </a>
+              <div class="profile-det-info">
+                <h3>
+                  <a [routerLink]="['/patient-profile', patient.id]">{{
+                    patient.patientName
+                  }}</a>
+                </h3>
+                <div class="patient-details">
+                  <h5><b>Patient ID :</b> {{ patient.id }}</h5>
+                  <h5 class="mb-0">
+                    <i class="fas fa-map-marker-alt"></i> {{ patient.city }}
+                  </h5>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="patient-info">
+            <ul>
+              <li>
+                Phone <span>{{ patient.mobile }}</span>
+              </li>
+              <li>
+                Age <span>{{ patient.age }}</span>
+              </li>
+              <li>
+                Blood Group <span>{{ patient.bloodGroup }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

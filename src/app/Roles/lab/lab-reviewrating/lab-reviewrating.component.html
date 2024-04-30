@@ -1,0 +1,61 @@
+<ul class="comments-list">
+  <li *ngFor="let review of comments">
+    <div class="comment">
+      <div class="row">
+        <div class="col-1">
+          <img
+            class="avatar avatar-sm rounded-circle"
+            [src]="review.imageName"
+            alt="User Image"
+          />
+        </div>
+        <div class="col-4">
+          <span class="comment-author"
+            ><b>{{ review.patientName }}</b></span
+          >
+          <div class="review-count rating">
+            <i
+              [class]="star"
+              *ngFor="let star of getStarIcons(review.rating)"
+            ></i>
+          </div>
+          <div class="comment-body">
+            <p class="comment-content">{{ review.description }}</p>
+            <i class="bi bi-trash" (click)="deleteReview(review.id)"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="comments-reply">
+      <p>Replies</p>
+      <li *ngFor="let reply of review.replyResponse">
+        <div class="comment">
+          <div class="row">
+            <div class="col-1">
+              <img
+                class="avatar avatar-sm rounded-circle"
+                [src]="reply.imageName"
+                alt="User Image"
+              />
+            </div>
+            <div class="col-4">
+              <span class="comment-author"
+                ><b>{{ reply.patientName }}</b></span
+              >
+
+              <div class="comment-body">
+                <p class="comment-content">{{ reply.description }}</p>
+                <i
+                  class="bi bi-trash"
+                  (click)="deleteReply(reply.id, review.id)"
+                >
+                </i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>

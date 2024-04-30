@@ -1,0 +1,143 @@
+<div style="text-align: center; color: #0de0fe;"><h2 style="color: #0de0fe;">Our Best Doctors...</h2></div>
+
+<div class="slide-container swiper card-center ">
+  <div class="slide-content">
+      <div class="card-wrapper swiper-wrapper">
+        <!-- {{doctors |json}} -->
+          <div class="card swiper-slide" *ngFor="let data of doctors">
+              <div class="image-content">
+                  <span class="overlay"></span>
+                  <div class="card-image">
+                      <img [src]="data.imageName" alt="" class="card-img">
+                  </div>
+              </div>
+              <div class="card-content">
+                  <h2 class="name">{{data.name}}</h2>
+                  <p class="description">Doctor With Specility Of {{data.speciality.spName}} {{data.speciality.spDescription}} From City Of {{data.city}} {{data.postalcode}} .</p>
+                  <button class="button" [routerLink]="'/doctorprofile/'+data.id">View Profile</button>
+              </div>
+          </div>
+
+      </div>
+  </div>
+  <div class="swiper-button-next swiper-navBtn"></div>
+  <div class="swiper-button-prev swiper-navBtn"></div>
+  <div class="swiper-pagination"></div>
+
+</div>
+
+
+
+
+
+
+        <div style="text-align: center; color: #0de0fe;"><h2 style="color: #0de0fe;">Our Best Labs...</h2></div>
+
+        <div class="slide-container swiper card-center ">
+          <div class="slide-content">
+              <div class="card-wrapper swiper-wrapper">
+                  <div class="card swiper-slide" *ngFor="let data of Labs">
+                      <div class="image-content">
+                          <span class="overlay"></span>
+                          <div class="card-image">
+                              <img [src]="data.imageName" alt="" class="card-img">
+                          </div>
+                      </div>
+                      <div class="card-content">
+                          <h2 class="name">{{data.labName}}</h2>
+                          <p class="description">Doctor With Specility Of {{data.labTests}} {{data.labTests}} From City Of {{data.location.city}} {{data.location.country}} .</p>
+                          <button class="button" (click)="navigateToprofileWithId(data.id)">View Profile</button>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+          <div class="swiper-button-next swiper-navBtn"></div>
+          <div class="swiper-button-prev swiper-navBtn"></div>
+          <div class="swiper-pagination"></div>
+
+        </div>
+
+
+
+
+
+
+
+
+<!-- specialities.component.html -->
+<!-- <section class="section section-doctor">
+    <div class="container-fluid">
+        <div >
+            <div class="section-header ">
+                <h2>Book Our Doctor</h2>
+                <p>Lorem Ipsum is simply dummy text </p>
+            </div>
+            <div class="about-content">
+                <p>It is a long established fact that a reader will be distracted by the readable content of a page when
+                    looking at its layout. The point of using Lorem Ipsum.</p>
+                <p>web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+                    uncover many web sites still in their infancy. Various versions have evolved over the years,
+                    sometimes</p>
+                <a href="javascript:;">Read More..</a>
+            </div>
+        </div>
+        <div class="row"> -->
+
+
+
+
+            <!-- <div class="col-lg-4" *ngFor="let doctor of doctors">
+
+                <mat-card style="margin-bottom: 20px;">
+                    <div class="profile-widget">
+                        <div class="doc-img">
+                            <a href="#">
+                              <img  [src]="IMG_URLs +doctor.imageName" class="img-fluid" alt="User Image">
+
+                            </a>
+                            <a href="javascript:void(0)" class="fav-btn">
+                                <i class="far fa-bookmark"></i>
+                            </a>
+                        </div>
+                        <div class="pro-content">
+                            <h3 class="title">
+                                <a href="#">{{ doctor.name }}</a>
+                                <i class="fas fa-check-circle verified"></i>
+                            </h3>
+                            <p class="speciality">{{ doctor.speciality.spName }}</p>
+                            <div class="rating">
+                                <i class="fas fa-star filled" *ngFor="let i of [1,2,3,4,5]"></i>
+                                <span class="d-inline-block average-rating">({{ doctor.rate }})</span>
+                            </div>
+                            <ul class="available-info">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i> {{ doctor.city }}
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i> {{ doctor.status }}
+                                </li>
+                                <li>
+                                    <i class="far fa-money-bill-alt"></i> {{ doctor.rate }}
+                                    <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i>
+                                </li>
+                            </ul>
+                            <div class="row row-sm">
+                                <div class="col-6">
+                                  <a class="btn book-btn" [routerLink]="'/patientmaindashboard/doctorprofile/'+doctor.id">View Profile</a>
+
+                                </div>
+                                <div class="col-6">
+                                    <a *ngIf="user" class="btn book-btn" [routerLink]="'/patientmaindashboard/doctorappointmentbooking/'+doctor.id">Book Now</a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+
+            </div>
+        </div>
+    </div>
+</section>-->

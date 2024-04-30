@@ -1,0 +1,52 @@
+<!-- lab-test.component.html -->
+{{labtestcg|json}}
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-7 col-lg-8 col-xl-9">
+        <div class="card">
+          <h1 style="text-align: center;">Update Lab Test</h1>
+          <div class="card-body">
+            <!-- LabTest Settings Form -->
+            <form (ngSubmit)="updateLabTest(labTest.id)">
+              <div class="row form-row">
+                <div class="col-12 col-md-6">
+                  <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="testName" [(ngModel)]="labtestcg.testName" [placeholder]="labTest.testName">
+                  </div>
+                </div>
+               
+                
+                
+                <div class="col-12 col-md-6">
+                  <div class="form-group">
+                    <label>Availability</label>
+                    <input type="text" class="form-control" [(ngModel)]="labtestcg.availability" name="availability" [placeholder]="labTest.availability">
+                  </div>
+                </div>
+                
+                <div class="col-12 col-md-6">
+                  <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" rows="3" [(ngModel)]="labTest.description" name="description"  [placeholder]="labTest.description"></textarea>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="form-group">
+                    <label>Price</label>
+                    <input type="text" class="form-control" [(ngModel)]="labtestcg.rates" name="rates" [placeholder]="labTest.rates">
+                  </div>
+                </div>
+                </div>
+              <div class="submit-section">
+                <button type="submit" class="btn btn-primary submit-btn">Update Lab Test</button>
+              </div>
+            </form>
+            <!-- /LabTest Settings Form -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

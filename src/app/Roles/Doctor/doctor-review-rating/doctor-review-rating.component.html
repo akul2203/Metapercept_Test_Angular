@@ -1,0 +1,61 @@
+<!-- <p>doctor-review-rating works!</p>
+{{reviews |json}} -->
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar" style="margin-bottom: 3%">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+        <nav aria-label="breadcrumb" class="page-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a [routerLink]="'/doctordashboard'">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Reviews</li>
+          </ol>
+        </nav>
+        <h2 class="breadcrumb-title">Reviews</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Breadcrumb -->
+<body>
+  <!-- hello -->
+  <div>
+    <!-- Loop through each review -->
+
+    <div class="review-container" *ngFor="let review of reviews">
+      <img class="review-image" [src]="review.imageName" alt="Patient Image" />
+      <span class="review-text">
+        <strong>{{ review.patientName }}</strong> rated
+        <strong>{{ review.rating }}</strong> stars.<br />
+        {{ review.description }}
+      </span>
+      <!-- Loop through each reply for the current review -->
+      <div class="reply-container" *ngFor="let reply of review.replyResponse">
+        <img class="reply-image" [src]="reply.imageName" alt="Doctor Image" />
+        <span class="reply-text">
+          <strong>{{ reply.patientName }}</strong> replied:<br />
+          {{ reply.description }}
+        </span>
+      </div>
+      <!-- Input field and button to reply -->
+      <a
+        class="comment-btn reply-btn"
+        (click)="review.showReplyForm = !review.showReplyForm"
+      >
+        <i class="fas fa-reply"></i> Reply
+      </a>
+      <div *ngIf="review.showReplyForm">
+        <textarea
+          class="form-control"
+          [(ngModel)]="replyText"
+          placeholder="Write a reply..."
+        ></textarea>
+        <button class="btn btn-primary" (click)="replyToReview(review.id)">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</body>

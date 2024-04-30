@@ -1,0 +1,132 @@
+<!-- Home Banner -->
+<section class="section section-search" style="margin-top: 1%">
+  <div class="container-fluid">
+    <div class="banner-wrapper">
+      <div class="banner-header text-center">
+        <h1>Search Doctor, Make an Appointment</h1>
+        <p>
+          Discover the best doctors, clinic & hospital the city nearest to you.
+        </p>
+      </div>
+
+      <!-- <div *ngIf="searchResult">Search Result: {{ searchResult | json }}</div> -->
+
+      <!-- Search -->
+      <div class="search-box">
+        <form>
+          <div class="form-group search-location">
+            <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="searchTerm"
+            name="searchTerm"
+            (keyup)="searching()"
+            placeholder="Search Location"
+            id="search-resets"
+          />
+
+            <span class="form-text">Based on your Location</span>
+          </div>
+          <div class="form-group search-info">
+            <!-- <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="searchTerm"
+              name="searchTerm"
+              (keyup)="searching()"
+              placeholder="Search Doctors, Clinics, Hospitals, Diseases, etc"
+              list="menace" name="menace"
+            />
+            <datalist id="menace" class="datalist-custom">
+              <option
+                *ngFor="let menace of data.doctor"
+                class="datalist-option"
+              >
+                <img [src]="IMG_URLs + menace.imageName" alt="User Image" />
+                {{ menace.name }}
+              </option>
+            </datalist> -->
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="searchTerm"
+              name="searchTerm"
+              (keyup)="searching()"
+              placeholder="Search Doctors, Clinics, Hospitals, Diseases, etc"
+              id="search-reset"
+            />
+            <ul class="result-list" id="search-reset" >
+              <li *ngFor="let menace of data.doctor" class="result-item" id="search-reset">
+                <img [src]=" menace.imageName" alt="User Image" id="search-reset" [routerLink]="'/doctorprofile/' + menace.id" />
+                <div class="result-details" id="search-reset">
+                  <h4 id="search-reset"  [routerLink]="'/doctorprofile/' + menace.id">{{ menace.name }}  {{menace.city}}</h4>
+                  <!-- Add more details as needed -->
+                </div>
+              </li>
+            </ul>
+            <ul class="result-list" id="search-reset" >
+              <li *ngFor="let menace of data.lab" class="result-item" id="search-reset">
+                <img [src]="IMG_URLs + menace.imageName" alt="User Image" id="search-reset" />
+                <div class="result-details" id="search-reset">
+                  <h4 id="search-reset">{{ menace.labName}}</h4>
+                  <!-- Add more details as needed -->
+                </div>
+              </li>
+            </ul>
+
+            <span class="form-text">Ex: Dental or Sugar Checkup, etc</span>
+          </div>
+
+          <button
+            type="submit"
+            (click)="searching()"
+            class="btn btn-primary search-btn"
+          >
+            <i
+              class="fas fa-search"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            ></i>
+            <span>Search</span>
+          </button>
+        </form>
+      </div>
+      <!-- /Search -->
+    </div>
+  </div>
+</section>
+<!-- /Home Banner -->
+
+<!-- <div class="modal-content" *ngIf="data">
+  <div class="modal-header">
+
+
+
+  </div>
+
+  <ul>
+    <li *ngFor="let d of data.doctor">
+      <h2>{{d.name}}</h2>
+
+      <a href="#" (click)="openProfile('doctor',d.id)" class="booking-doc-img">
+        <img _ngcontent-ng-c2320061364="" [src]="IMG_URLs+ d.imageName" alt="User Image" class="avatar-img rounded-circle">
+      </a>
+    </li>
+    <br>
+
+    <li *ngFor="let d of data.lab">
+      <h2>{{d.labName}}</h2>
+
+      <a  (click)="openProfile('lab',d.id)" href="#" class="booking-doc-img">
+        <img _ngcontent-ng-c2320061364="" [src]="IMG_URLs+ d.imageName" alt="User Image" class="avatar-img rounded-circle">
+      </a>
+    </li>
+    <li *ngFor="let d of data.pharmacy">
+      <h2>{{d.pharmaName}}</h2>
+
+      <a href="#" (click)="openProfile('doctor',d.id)" class="booking-doc-img">
+        <img _ngcontent-ng-c2320061364="" [src]="" alt="User Image" class="avatar-img rounded-circle">
+      </a>
+    </li>
+  </ul>
+</div> -->

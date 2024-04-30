@@ -1,0 +1,85 @@
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-lg-4 col-xl-3 theiaStickySidebar">
+
+                <!-- Search Filter -->
+              <app-patient-sidebar></app-patient-sidebar>
+                <!-- /Search Filter -->
+
+            </div>
+
+            <div class="col-md-12 col-lg-8 col-xl-9">
+
+                <div *ngIf="labs.length === 0">No labs available</div>
+
+                <div *ngFor="let lab of labs; let i = index">
+                  
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="doctor-widget">
+                              
+                                <div class="doc-info-left">
+                                    <div class="doctor-img">
+                                        <a href="#" class="booking-doc-img">
+                                            <div><figure><img alt="jobBox" [src]="IMG_URLs + lab.imageName" height="150px" width="100px"></figure></div>
+                                        </a>
+                                    </div>
+                                    <div class="doc-info-cont">
+                                        <h3 class="doc-name">{{ lab.labName }}</h3>
+                                        <h3 class="bi bi-envelope-open" >&nbsp;{{ lab.email }}</h3>
+                                        <h3 class="bi bi-file-earmark-text-fill">&nbsp;{{lab.biography}}</h3>
+
+                                        <div  *ngIf="lab.labReviewRatings && lab.labReviewRatings.length > 0">
+                                            <div *ngFor="let labReview of lab.labReviewRatings">
+                                                <div class="rating" >
+                                                    <i class="fas fa-star" *ngFor="let star of starsArray"></i>
+                                                    <span class="d-inline-block average-rating" >({{ labReview.rating }})</span>
+                                                </div>
+                                                <p>{{ labReview.review }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="clinic-details" *ngIf="lab.location">
+                                            <p class="doc-location"><i class="fas fa-map-marker-alt"></i> {{lab.location.area}}{{lab.location.addressLine}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="doc-info-right">
+                                    <div class="clini-infos">
+                                        <ul>
+                                            <li>
+                                                <i class="far fa-thumbs-up"></i>
+                                                {{ lab.isApproved ? 'Approved' : 'Not Approved' }}
+                                            </li>
+                              
+                                            <li><i class="fas fa-phone"></i> {{ lab.phone }}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="clinic-booking">
+                                        <a class="apt-btn"  (click)="removeFromFab(lab.id)">Remove From Favorite</a>
+
+                                      
+                                    
+                                        <a class="apt-btn" [routerLink]="'/patientmaindashboard/labTestList/'+lab.id">View LabTest</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+             
+               
+            </div>
+        </div>
+        <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="length"
+            [pageSize]="pageSize" [disabled]="disabled" [showFirstLastButtons]="showFirstLastButtons"
+            [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []" [hidePageSize]="hidePageSize"
+            [pageIndex]="pageIndex" aria-label="Select page">
+        </mat-paginator>
+    </div>
+    
+</div>
+<!-- /Page Content -->
+
